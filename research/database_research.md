@@ -427,3 +427,172 @@ Studied practical techniques used to improve database performance in modern back
 - Efficient database interaction is as important as efficient SQL.
 
 Understanding these practices helps build scalable, maintainable, and high-performance backend systems.
+
+---
+
+# CRUD Operations
+
+Today I revised CRUD (Create, Read, Update, Delete) operations from both SQL and backend API perspectives. CRUD forms the foundation of database-driven applications, where each operation typically maps to a REST API endpoint.
+
+## Create (INSERT)
+
+The **Create** operation is used to insert new records into a database. Before inserting data, backend applications should validate user input, enforce uniqueness constraints, verify foreign key relationships, and use transactions when multiple related inserts are required.
+
+## Read (SELECT)
+
+The **Read** operation retrieves data from the database. Best practices include selecting only the required columns instead of using `SELECT *`, implementing pagination for large datasets, and indexing frequently searched columns to improve performance.
+
+## Update (UPDATE)
+
+The **Update** operation modifies existing records. Updates should always include a `WHERE` clause to prevent accidental modification of all records. Production applications commonly maintain audit fields such as `updated_at` and `updated_by` to track changes.
+
+## Delete (DELETE)
+
+Two deletion strategies are commonly used:
+
+- **Hard Delete:** Permanently removes the record from the database.
+- **Soft Delete:** Marks the record as deleted using fields such as `is_deleted` and `deleted_at`, allowing recovery and preserving historical data.
+
+Soft deletes are preferred in most enterprise systems because they maintain data integrity and support auditing.
+
+## CRUD in Backend APIs
+
+CRUD operations directly correspond to RESTful API endpoints:
+
+- POST → Create
+- GET → Read
+- PUT/PATCH → Update
+- DELETE → Delete
+
+Understanding this mapping is essential when developing backend applications using frameworks such as FastAPI.
+
+## Key Learnings
+
+- CRUD operations are the foundation of database applications.
+- Backend validation is as important as SQL correctness.
+- Soft deletes are generally safer than hard deletes in production systems.
+- Efficient read operations require proper indexing and pagination.
+- Every CRUD operation typically corresponds to a REST API endpoint in modern web applications.
+
+---
+
+# Entity Relationship (ER) Diagrams
+
+Today I studied ER Diagrams from a software engineering perspective, focusing on how databases are designed before implementation.
+
+## Database Design Workflow
+
+Modern database development follows these stages:
+
+Requirements → Identify Entities → Identify Relationships → Draw ER Diagram → Normalize → Create Database → Develop Backend APIs
+
+This ensures that the database accurately represents the business requirements before implementation begins.
+
+## Identifying Entities
+
+Entities represent the main objects or concepts within a system. They are typically identified by extracting nouns from the project requirements.
+
+Examples include:
+
+- Student
+- Teacher
+- Department
+- Course
+- Asset
+- Inspection
+
+Each entity generally becomes a database table.
+
+## Relationships and Cardinality
+
+Relationships define how entities interact with each other.
+
+The three primary relationship types are:
+
+- One-to-One (1:1)
+- One-to-Many (1:N)
+- Many-to-Many (M:N)
+
+Many-to-Many relationships are implemented using associative (junction) tables.
+
+## Weak and Associative Entities
+
+Weak entities depend on another entity for their existence, such as Order Items or Enrollment Records.
+
+Associative entities resolve many-to-many relationships while also storing additional information. For example, an Enrollment entity connects Students and Courses while storing attributes such as semester, enrollment date, and grade.
+
+## Crow's Foot Notation
+
+Crow's Foot notation is the industry standard for representing entity relationships and cardinality in ER diagrams. It is widely used in database modeling tools and software engineering documentation.
+
+## Case Studies
+
+Designed conceptual ER models for:
+
+- Banking Systems
+- University Management Systems
+- GIS Asset Management Systems
+
+Each case study demonstrated how business requirements are translated into entities, relationships, and normalized database structures.
+
+## Key Learnings
+
+- Database design begins with understanding business requirements, not writing SQL.
+- Correctly identifying entities and relationships leads to a scalable database design.
+- Associative entities are essential for implementing many-to-many relationships.
+- ER diagrams serve as the blueprint for database development and backend API design.
+
+---
+
+
+
+# Materialized Views in PostgreSQL
+
+Today I studied Materialized Views, a PostgreSQL feature used to improve the performance of expensive queries by storing their results physically in the database.
+
+## Views vs Materialized Views
+
+A standard View stores only the SQL query definition and executes the query each time it is accessed.
+
+A Materialized View executes the query once, stores the resulting data on disk, and serves future requests directly from the stored result. This significantly improves read performance for complex analytical queries.
+
+## Refreshing Materialized Views
+
+Since Materialized Views store data physically, they do not automatically reflect changes made to the underlying tables.
+
+To update the stored data, PostgreSQL provides:
+
+- `REFRESH MATERIALIZED VIEW`
+- `REFRESH MATERIALIZED VIEW CONCURRENTLY` (requires a unique index and allows concurrent reads)
+
+## Common Use Cases
+
+Materialized Views are commonly used for:
+
+- Business dashboards
+- Reporting systems
+- Data analytics
+- GIS summary layers
+- Heat maps
+- Statistical reports
+- Business Intelligence applications
+
+## Advantages
+
+- Faster query execution
+- Reduced computation for complex joins and aggregations
+- Improved dashboard and reporting performance
+- Lower database workload for repeated analytical queries
+
+## Limitations
+
+- Data can become outdated until refreshed.
+- Requires additional storage space.
+- Not suitable for real-time transactional data.
+
+## Key Learnings
+
+- Views store SQL queries, while Materialized Views store query results.
+- Materialized Views are ideal for expensive read-heavy workloads.
+- Refresh operations keep the stored data synchronized with the underlying tables.
+- They are widely used in reporting, analytics, and GIS applications where high read performance is more important than real-time updates.
