@@ -1,20 +1,29 @@
--- check query plan
-
+-- Basic execution plan
 EXPLAIN
 SELECT *
 FROM students
-WHERE email='ali@gmail.com';
+WHERE student_id = 10;
 
--- Execution timee
-
+-- Execution plan with timing
 EXPLAIN ANALYZE
 SELECT *
 FROM students
-WHERE cgpa>3.5;
+WHERE email = 'student1@example.com';
 
--- index scan
-
+-- Join execution plan
 EXPLAIN ANALYZE
-SELECT *
+SELECT s.first_name, c.course_name
+FROM students s
+JOIN enrollments e
+ON s.student_id = e.student_id
+JOIN courses c
+ON c.course_id = e.course_id;
+
+-- Aggregate execution plan
+EXPLAIN ANALYZE
+SELECT department_id, COUNT(*)
 FROM students
-WHERE student_id=15;
+GROUP BY department_id;
+
+-- Update planner statistics
+ANALYZE students;

@@ -1,17 +1,28 @@
--- Normal Index
-
-CREATE INDEX idx_student_email
+-- B-Tree Index
+CREATE INDEX idx_students_email
 ON students(email);
 
+-- Foreign Key Index
+CREATE INDEX idx_students_department
+ON students(department_id);
 
 -- Composite Index
+CREATE INDEX idx_courses_department_teacher
+ON courses(department_id, teacher_id);
 
-CREATE INDEX idx_course_department
-ON courses
-(department_id,teacher_id);
+-- Partial Index
+CREATE INDEX idx_active_students
+ON students(student_id)
+WHERE cgpa >= 3.5;
 
--- Unique index
+-- GiST Index 
 
-CREATE UNIQUE INDEX idx_teacher_email
+-- CREATE INDEX idx_assets_geom
+-- ON assets
+-- USING GIST (geom);
 
-ON teachers(email);
+-- GIN Index 
+
+-- CREATE INDEX idx_metadata
+-- ON projects
+-- USING GIN (metadata);
