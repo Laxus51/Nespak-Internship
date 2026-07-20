@@ -1,42 +1,111 @@
-
 # Research Documentation
 
-This folder contains the research, notes, and learning documentation completed during my WebGIS Internship.
+This folder contains all research, learning notes, documentation, and technical concepts studied throughout my WebGIS Internship.
 
-The purpose of this folder is to maintain a structured record of concepts studied throughout the internship, making it easier to review progress and document continuous learning.
+The goal of this repository is to document my learning journey, track my progress, and build a knowledge base covering modern WebGIS development, backend engineering, database systems, GIS technologies, and software architecture.
 
-## Contents
+---
 
-### Day 01
+## Repository Structure
 
-- Modern WebGIS technology stack research
+```TypeScript
+research/
+│
+├── Database/
+│   ├── Database Design & SQL
+│   ├── SQL vs NoSQL
+│   ├── MongoDB
+│   ├── SQLite
+│   ├── GIS Databases
+│   └── Database Scaling & Optimization
+│
+├── sql-practice/             
+```
+
+---
+
+## Learning Progress
+
+### Week 1
+
+#### WebGIS Fundamentals
+
+- Modern WebGIS technology stack
+- Industry research
 - Frontend, Backend and Database architecture
 - GIS integration in web applications
-- Industry research and project planning
+- Data flow in enterprise WebGIS systems
+- Project planning and technology selection
 
-### Day 02
+#### Database Engineering
 
-- Database Fundamentals
-- Relational Data Mapping
-- Database Normalization
-- SQL Fundamentals
-- Database Design for Backend APIs
-- Query Optimization
-- PostgreSQL concepts
-
-## Learning Goals
-
-Throughout this internship, this documentation will cover:
-
-- WebGIS Architecture
-- FastAPI Backend Development
+- Relational database design
+- ER diagrams and relational data mapping
+- Database normalization
+- SQL fundamentals and advanced queries
+- CRUD operations
+- Query optimization
+- Database indexing
+- Materialized Views
+- Stored Procedures
+- Connection Pooling
+- Database partitioning
+- Read Replicas
+- Sharding
+- Big Data concepts
+- SQL vs NoSQL
+- MongoDB
+- SQLite
+- Enterprise GIS Databases
 - PostgreSQL & PostGIS
-- SQL & Query Optimization
-- Database Design
-- API Development
-- Authentication & Authorization
-- GIS Data Processing
-- React Frontend Development
-- Deployment & DevOps
+- Spatial Indexing
+- Database architecture for high-traffic applications
 
-This folder will continue to grow as new technologies and concepts are learned during the internship.
+---
+
+## Technologies Studied
+
+### Databases
+
+- PostgreSQL
+- PostGIS
+- MongoDB
+- SQLite
+- Redis
+- pgvector
+
+### GIS
+
+- PostGIS
+- SpatiaLite
+- GeoPackage
+- Oracle Spatial
+- SQL Server Spatial
+
+### Concepts
+
+- Database Design
+- Data Modeling
+- Query Optimization
+- Database Scaling
+- Caching
+- AI Database Integration
+- Enterprise Architecture
+- Big Data
+- Spatial Databases
+
+---
+
+## Purpose
+
+This documentation serves as:
+
+- Daily internship learning log
+- Technical reference notes
+- Project planning documentation
+- Portfolio evidence of continuous learning
+- Personal knowledge base for future projects and interviews
+
+---
+
+> This documentation will continue to evolve throughout the internship as I learn new technologies, design patterns, and best practices in modern WebGIS development.
