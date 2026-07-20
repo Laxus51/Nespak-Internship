@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.gis",
     'rest_framework',
     'corsheaders',
-    'gis',
+    'webgis',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": "webgis_internship",
         "USER": "postgres",
         "PASSWORD": "solid",
@@ -125,3 +127,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+
+GDAL_LIBRARY_PATH = r"D:\SoLiD\QGIS\bin\gdal313.dll"
+GEOS_LIBRARY_PATH = r"D:\SoLiD\QGIS\bin\geos_c.dll"

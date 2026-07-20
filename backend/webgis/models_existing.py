@@ -1,10 +1,14 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class NycSubwayStation(models.Model):
     id = models.IntegerField(primary_key=True)
 
-    geom = models.TextField(blank=True, null=True)
+    geom = models.PointField(
+    srid=26918,
+    blank=True,
+    null=True
+)
 
     objectid = models.IntegerField(
         db_column="OBJECTID",
