@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models_existing import NycSubwayStation
-
+from ..models import NycSubwayStation
 
 class NycSubwayStationSerializer(serializers.ModelSerializer):
     class Meta:

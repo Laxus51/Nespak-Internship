@@ -1,6 +1,5 @@
 from django.contrib.gis.db import models
 
-
 class NycSubwayStation(models.Model):
     id = models.IntegerField(primary_key=True)
 
