@@ -1,6 +1,7 @@
 from rest_framework import viewsets
-from ..models import NycSubwayStation
-from ..serializers import NycSubwayStationSerializer
+from django.shortcuts import get_object_or_404
+from ..models import NycSubwayStation, NycNeighborhood
+from ..serializers import NycSubwayStationSerializer, NycNeighborhoodSerializer
 
 
 from django.contrib.gis.geos import Polygon
@@ -147,4 +148,13 @@ class NycSubwayStationViewSet(viewsets.ReadOnlyModelViewSet):
         )
 
         serializer = self.get_serializer(stations_within_radius, many=True)
+        return Response(serializer.data)
+
+
+    
+    @action(detail=True, methods=["get"])
+    def neighborhood(self,request, pk= None):
+        station = self.get_object()
+        neighborhood = get_object_or_404(NycNeighborhood, geom__contains=station.geom)
+        serializer = NycNeighborhoodSerializer(neighborhood)
         return Response(serializer.data)

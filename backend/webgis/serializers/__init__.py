@@ -3,3 +3,5 @@ from .neighborhood import NycNeighborhoodSerializer
 from .street import NycStreetSerializer
 from .homicide import NycHomicideSerializer
 from .census_block import NycCensusBlockSerializer
+from .neighborhood_detail import NycNeighborhoodDetailSerializer
+from .dashboard import TopNeighborhoodSerializer
